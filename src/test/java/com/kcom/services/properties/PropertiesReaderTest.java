@@ -47,13 +47,6 @@ public class PropertiesReaderTest {
 
 
     @Test
-    public void validateThatThrowsExceptionIfPropertiesFileIsEmpty() {
-        assertThatThrownBy(() -> propertiesService.readProperties(""))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("Properties not found");
-    }
-
-    @Test
     public void validateThatThrowsExceptionIfPropertiesFileIsDoseNotExist() {
         assertThatThrownBy(() -> propertiesService.readProperties("test.properties"))
                 .isInstanceOf(IllegalArgumentException.class)

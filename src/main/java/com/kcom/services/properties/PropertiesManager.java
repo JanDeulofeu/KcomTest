@@ -2,10 +2,9 @@ package com.kcom.services.properties;
 
 import com.kcom.types.Coin;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
+import java.io.*;
+import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -30,9 +29,9 @@ public class PropertiesManager implements PropertiesService {
     public EnumMap<Coin, Integer> readProperties(final String resourceName) {
 
         try {
-            final URL url = this.getClass().getClassLoader().getResource(resourceName);
+            final URI uri = new URI(getClass().getClassLoader().getResource(resourceName).toString());
 
-            try (final Stream<String> lines = Files.lines(Paths.get(url.toURI()))) {
+            try (final Stream<String> lines = Files.lines(Paths.get(uri))) {
 
                 final Map<Coin, Integer> collect = lines.map(line -> line.split(SEPARATOR))
                         .collect(Collectors.toMap(k -> Coin.getCoinTypeByValue(Integer.valueOf(k[0])), v -> Integer.valueOf(v[1])));
@@ -53,8 +52,8 @@ public class PropertiesManager implements PropertiesService {
 
         try {
 
-            final URL url = this.getClass().getClassLoader().getResource(resourceName);
-            final Path path = Paths.get(url.toURI());
+            final URI uri = new URI(getClass().getClassLoader().getResource(resourceName).toString());
+            final Path path = Paths.get(uri);
 
             try (final BufferedWriter writer = Files.newBufferedWriter(path)) {
 

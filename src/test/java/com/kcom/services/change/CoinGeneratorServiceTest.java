@@ -3,6 +3,8 @@ package com.kcom.services.change;
 import com.kcom.services.properties.PropertiesManager;
 import com.kcom.services.properties.PropertiesService;
 import com.kcom.types.Coin;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -25,9 +27,9 @@ public class CoinGeneratorServiceTest {
     private static final PropertiesService propertiesService = new PropertiesManager();
     private static EnumMap<Coin, Integer> testProperties;
 
-    @Parameterized.Parameters
-    public static Collection<Object[]> data() {
-
+    @Before
+    public void init()
+    {
         testProperties = new EnumMap<Coin, Integer>(Coin.class) {{
             put(Coin.POUND, 3);
             put(Coin.FIFTY, 1);
@@ -39,6 +41,10 @@ public class CoinGeneratorServiceTest {
         }};
 
         propertiesService.writeProperties(testProperties, PROPERTIES_RESOURCE);
+    }
+
+    @Parameterized.Parameters
+    public static Collection<Object[]> data() {
 
         return Arrays.asList(new Object[][]{
                 {-1, Collections.emptyList()},

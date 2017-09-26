@@ -40,9 +40,9 @@ public class PropertiesWriterTest {
 
     @Test
     public void validateThatThrowsExceptionIfPropertiesFileIsNull() {
-        assertThatThrownBy(() -> this.propertiesService.writeProperties(null, PROPERTIES_RESOURCE))
+        assertThatThrownBy(() -> this.propertiesService.writeProperties(null, null))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("Null properties reference");
+                .hasMessage("Properties not found");
     }
 
 

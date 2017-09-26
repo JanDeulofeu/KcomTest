@@ -52,7 +52,6 @@ public class ChangeCalculator implements ChangeCalculatorService {
         final Collection<Coin> results = new ArrayList<>();
 
         lock.lock();
-
         try {
 
             final EnumMap<Coin, Integer> coinMap = propertiesService.readProperties(PROPERTIES_RESOURCE);
@@ -64,7 +63,6 @@ public class ChangeCalculator implements ChangeCalculatorService {
                     pence -= coin.getKey().getDenomination();
                     coin.setValue(coin.getValue() - 1);
                 }
-
             }
             propertiesService.writeProperties(coinMap, PROPERTIES_RESOURCE);
         }finally {
