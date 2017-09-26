@@ -1,5 +1,6 @@
 package com.kcom.services.change;
 
+import com.kcom.services.exceptions.InventoryException;
 import com.kcom.services.properties.PropertiesManager;
 import com.kcom.services.properties.PropertiesService;
 import com.kcom.types.Coin;
@@ -24,6 +25,11 @@ public class ChangeCalculator implements ChangeCalculatorService {
 
     public ChangeCalculator() {
         this.propertiesService = new PropertiesManager();
+        this.lock = new ReentrantLock();
+    }
+
+    public ChangeCalculator(final PropertiesService propertiesService) {
+        this.propertiesService = propertiesService;
         this.lock = new ReentrantLock();
     }
 
@@ -65,6 +71,11 @@ public class ChangeCalculator implements ChangeCalculatorService {
                 }
             }
             propertiesService.writeProperties(coinMap, PROPERTIES_RESOURCE);
+
+            if(pence > 0)
+            {
+                throw new InventoryException("Insufficient Coinage.");
+            }
         }finally {
             lock.unlock();
         }
