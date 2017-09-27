@@ -5,6 +5,10 @@ import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+
+/**
+ * @author jan.deulofeu
+ */
 public class MainTest {
 
     private VendingMachineLauncher vendingMachine = new VendingMachineLauncher();
@@ -37,7 +41,6 @@ public class MainTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Not input parameters introduced 1- Service (OptimalChangeFor or ChangeFor) 2- Pence");
     }
-
 
     @Test
     public void validateThatThrowsInventoryExceptionIfInsuficientChange() {

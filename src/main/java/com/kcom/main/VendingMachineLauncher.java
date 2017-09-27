@@ -3,6 +3,10 @@ package com.kcom.main;
 import com.kcom.services.change.ChangeCalculator;
 import com.kcom.services.change.ChangeCalculatorService;
 
+
+/**
+ * @author jan.deulofeu
+ */
 public class VendingMachineLauncher {
 
     private static Integer service = 0;
@@ -27,7 +31,6 @@ public class VendingMachineLauncher {
                 changeCalculatorService.getChangeFor(pence).stream().forEach(coin -> System.out.println(String.format("Coin: %s", coin)));
                 break;
         }
-
     }
 
     private void validateInputParameters(final String[] args)
@@ -49,6 +52,5 @@ public class VendingMachineLauncher {
 
         service = Integer.valueOf(args[0]);
         pence = Integer.valueOf(args[1]);
-
     }
 }

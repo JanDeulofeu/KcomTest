@@ -1,7 +1,6 @@
 package com.kcom.types;
 
 import java.util.Arrays;
-import java.util.Optional;
 
 /**
  * @author jan.deulofeu

@@ -37,14 +37,12 @@ public class PropertiesWriterTest {
 
     }
 
-
     @Test
     public void validateThatThrowsExceptionIfPropertiesFileIsNull() {
         assertThatThrownBy(() -> this.propertiesService.writeProperties(null, null))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Properties not found");
     }
-
 
     @Test
     public void validateThatThrowsExceptionIfPropertiesFileIsEmpty() {

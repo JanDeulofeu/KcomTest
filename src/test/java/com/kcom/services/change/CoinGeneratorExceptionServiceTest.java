@@ -45,5 +45,4 @@ public class CoinGeneratorExceptionServiceTest {
                 .isInstanceOf(InventoryException.class)
                 .hasMessage("Insufficient Coinage.");
     }
-
 }

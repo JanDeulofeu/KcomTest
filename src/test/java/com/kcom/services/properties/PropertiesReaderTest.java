@@ -8,7 +8,6 @@ import static com.kcom.services.properties.PropertiesManager.PROPERTIES_RESOURCE
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-
 /**
  * @author jan.deulofeu
  */
@@ -37,14 +36,12 @@ public class PropertiesReaderTest {
         assertThat(result).hasSameSizeAs(expected).containsAllEntriesOf(expected);
     }
 
-
     @Test
     public void validateThatThrowsExceptionIfPropertiesFileIsNull() {
         assertThatThrownBy(() -> propertiesService.readProperties(null))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Properties not found");
     }
-
 
     @Test
     public void validateThatThrowsExceptionIfPropertiesFileIsDoseNotExist() {
@@ -59,5 +56,4 @@ public class PropertiesReaderTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Properties not found");
     }
-
 }

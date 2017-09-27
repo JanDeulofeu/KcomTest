@@ -2,7 +2,8 @@ package com.kcom.services.properties;
 
 import com.kcom.types.Coin;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;

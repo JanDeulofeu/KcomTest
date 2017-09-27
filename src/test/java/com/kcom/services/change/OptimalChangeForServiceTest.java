@@ -57,6 +57,5 @@ public class OptimalChangeForServiceTest {
         final Collection<Coin> result = this.changeService.getOptimalChangeFor(this.change);
 
         assertThat(result).hasSameSizeAs(this.expected).containsAll(this.expected);
-
     }
 }

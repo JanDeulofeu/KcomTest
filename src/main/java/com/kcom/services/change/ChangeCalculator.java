@@ -41,19 +41,17 @@ public class ChangeCalculator implements ChangeCalculatorService {
 
         for (final Coin coin : Coin.values()) {
 
-            while(pence >= coin.getDenomination())
-            {
+            while (pence >= coin.getDenomination()) {
                 results.add(coin);
                 pence -= coin.getDenomination();
             }
         }
-
         return results;
     }
 
 
     @Override
-    public Collection<Coin> getChangeFor( int pence) {
+    public Collection<Coin> getChangeFor(int pence) {
 
         final Collection<Coin> results = new ArrayList<>();
 
@@ -72,11 +70,10 @@ public class ChangeCalculator implements ChangeCalculatorService {
             }
             propertiesService.writeProperties(coinMap, PROPERTIES_RESOURCE);
 
-            if(pence > 0)
-            {
+            if (pence > 0) {
                 throw new InventoryException("Insufficient Coinage.");
             }
-        }finally {
+        } finally {
             lock.unlock();
         }
         return results;

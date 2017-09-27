@@ -79,9 +79,7 @@ public class CoinGeneratorServiceTest {
         final Collection<Coin> result = changeService.getChangeFor(this.change);
 
         assertThat(result).hasSameSizeAs(this.expected).containsAll(this.expected);
-
     }
-
 
     @Test
     public void validatePropertiesFileIsPersistedWithValuesDecremented() {
